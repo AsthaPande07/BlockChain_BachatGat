@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Amit Sharma",
+    "walletAddress": "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+    "reputationScore": 82,
+    "creditScore": 710,
+    "eligibilityStatus": true,
+    "emergencyStatus": false
+  },
+  {
+    "name": "Priya Verma",
+    "walletAddress": "0x4B0897b0513fD5C1c3c4c6e2aBc9B84f7Ff1aA25",
+    "reputationScore": 67,
+    "creditScore": 640,
+    "eligibilityStatus": false,
+    "emergencyStatus": true
+  },
+  {
+    "name": "Ravi Kumar",
+    "walletAddress": "0x583031D1113aD414F02576BD6afaBfb302140225",
+    "reputationScore": 90,
+    "creditScore": 750,
+    "eligibilityStatus": true,
+    "emergencyStatus": false
+  },
+  {
+    "name": "Saloni Puraswani",
+    "walletAddress": "0xd1220A0cf47C7B9Be7A2E6BA89F429762e7b9ADB",
+    "reputationScore": 76,
+    "creditScore": 695,
+    "eligibilityStatus": true,
+    "emergencyStatus": true
+  },
+  {
+    "name": "Karan Mehta",
+    "walletAddress": "0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c",
+    "reputationScore": 55,
+    "creditScore": 610,
+    "eligibilityStatus": false,
+    "emergencyStatus": false
+  }
+]
