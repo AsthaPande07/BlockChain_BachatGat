@@ -175,14 +175,28 @@ const ClaimEmergency = () => {
                 <textarea id="description" className="form-control" placeholder="Please provide detailed information about your emergency situation..." required></textarea>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="document">Upload Supporting Document</label>
-                <div className="file-upload">
-                  <input type="file" id="document" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" onChange={handleFileChange} />
-                  <div className="file-upload-btn"><span>{fileName}</span></div>
-                </div>
-                <div className="upload-hint">Upload proof of emergency (medical bills, official documents, etc.)</div>
-              </div>
+             <div className="form-group">
+  <label htmlFor="document">Upload Supporting Document</label>
+  <div className="file-upload">
+    <input
+      type="file"
+      id="document"
+      accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+      onChange={handleFileChange}
+      style={{ display: "none" }} // completely hide input
+    />
+    <div
+      className="file-upload-btn"
+      onClick={() => document.getElementById("document").click()} // trigger input click
+    >
+      <span>{fileName}</span>
+    </div>
+  </div>
+  <div className="upload-hint">
+    Upload proof of emergency (medical bills, official documents, etc.)
+  </div>
+</div>
+
 
               <div className="modal-actions">
                 <button type="button" className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>Cancel</button>
