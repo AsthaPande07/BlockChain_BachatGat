@@ -1,0 +1,59 @@
+body {
+  background: #f6fafb;
+}
+
+.card {
+  border-radius: 16px;
+}
+
+.circle-check {
+  background: #2ecc40;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px auto;
+  font-size: 2rem;
+}
+
+.winner-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ffe8b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  font-size: 2rem;
+}
+
+.info-box {
+  background: #e8f3fa;
+  border: 1px solid #c8e0f3;
+}
+
+.impact-box {
+  background: #fae8fa;
+  border: 1px solid #f3c8e0;
+}
+
+.status-success {
+  background: #e5faee;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.ledger-btn {
+  background: #2770ef;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.ledger-btn:hover {
+  background: #154fa2;
+}

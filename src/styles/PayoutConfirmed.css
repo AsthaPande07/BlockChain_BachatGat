@@ -1,0 +1,46 @@
+/* PayoutConfirmed.css */
+
+.payout-container {
+  max-width: 600px;
+  margin: 5rem auto;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background: #f9f9f9;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.payout-icon {
+  font-size: 4rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+
+.payout-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.payout-message {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.payout-button {
+  background: #4caf50;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.payout-button:hover {
+  background: #43a047;
+}
