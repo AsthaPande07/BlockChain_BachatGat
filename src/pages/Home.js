@@ -1,12 +1,14 @@
+// src/pages/Home.js
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
+import { connectWallet } from "../blochain_frontend/contractServices"; // ✅ import MetaMask connect
 
 export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Feature items entrance
+    // Animations
     const features = document.querySelectorAll(".feature-item");
     features.forEach((feature, index) => {
       feature.style.opacity = "0";
@@ -18,7 +20,6 @@ export default function Home() {
       }, 300 + index * 100);
     });
 
-    // Stats entrance
     const stats = document.querySelectorAll(".stat");
     stats.forEach((stat, index) => {
       stat.style.opacity = "0";
@@ -30,7 +31,6 @@ export default function Home() {
       }, 600 + index * 200);
     });
 
-    // Buttons entrance
     const buttons = document.querySelectorAll(".auth-button");
     buttons.forEach((btn, index) => {
       btn.style.opacity = "0";
@@ -42,7 +42,7 @@ export default function Home() {
       }, 800 + index * 200);
     });
 
-    // Background parallax effect
+    // Parallax background
     const handleMouseMove = (e) => {
       const circles = document.querySelectorAll(".bg-circle");
       const mouseX = e.clientX;
@@ -56,14 +56,20 @@ export default function Home() {
     };
 
     document.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const handleRegister = () => {
-    navigate("/front");
+  // ✅ Create Account → Only connect MetaMask
+  const handleRegister = async () => {
+    try {
+      const address = await connectWallet();
+      console.log("✅ Wallet connected:", address);
+      alert(`Wallet connected: ${address}`);
+      navigate("/front"); // then go to front page
+    } catch (err) {
+      console.error(err);
+      alert("❌ Please connect MetaMask to continue.");
+    }
   };
 
   const handleSignIn = () => {

@@ -3,8 +3,18 @@ import "../styles/CommunityDashboard.css";
 import { useNavigate } from "react-router-dom";
 import demoData from "../demo_data.json"; // ✅ import demo data
 
+// 🔗 Blockchain services
+import {
+  connectWallet,
+  getContracts,
+  approveContribution,
+  signCommitment,
+} from "../blochain_frontend/contractServices";
+import { ethers } from "ethers";
+
 function CommunityDashboard() {
   const [progress, setProgress] = useState(0);
+  const [walletAddress, setWalletAddress] = useState(null);
   const navigate = useNavigate();
 
   // Community data from JSON
@@ -21,10 +31,35 @@ function CommunityDashboard() {
     }, 500);
   }, [community]);
 
+  // 🔘 Handle Auto Debit (smart contract integration)
+  const handleAutoDebit = async () => {
+    try {
+      // connect wallet
+      const wallet = await connectWallet();
+      setWalletAddress(wallet);
+
+      // define contribution amount (example: ₹500)
+      const amount = ethers.parseUnits("500", 18);
+
+      // approve contribution on smart contract
+      await approveContribution(amount);
+
+      // sign commitment
+      await signCommitment(amount);
+
+      // update reputation in smart contract
+      const { reputation } = getContracts();
+      await reputation.increaseReputation(wallet, 10);
+
+      alert("✅ Auto debit successful & reputation updated!");
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error: " + err.message);
+    }
+  };
+
   return (
     <div className="dashboard-body">
-      {/* 🚫 Warning banner removed */}
-
       {/* Main Container */}
       <div className="container">
         {/* Page Header */}
@@ -143,6 +178,12 @@ function CommunityDashboard() {
 
         {/* Action Buttons */}
         <div className="action-buttons">
+          {/* 🔘 Auto Debit Button */}
+          <button className="btn btn-success" onClick={handleAutoDebit}>
+            💸 Auto Debit
+          </button>
+
+          {/* Manage Contribution */}
           <button
             className="btn btn-primary"
             onClick={() => navigate("/contribution")}
@@ -153,6 +194,7 @@ function CommunityDashboard() {
             </div>
           </button>
 
+          {/* View Payout */}
           <button
             className="btn btn-secondary"
             onClick={() => navigate("/fair-payout")}
