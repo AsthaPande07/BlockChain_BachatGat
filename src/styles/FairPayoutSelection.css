@@ -169,8 +169,13 @@ body {
 }
 
 /* Gift box */
-/* gift-box is container; inner parts are absolutely positioned relative to it */
-.gift-box-container{ display:flex; justify-content:center; margin-bottom:18px; }
+.gift-box-container{ 
+  display:flex; 
+  flex-direction: column; /* stack vertically */
+  align-items:center; 
+  justify-content:center; 
+  margin-bottom:10px; 
+}
 .gift-box{
   width:220px;
   height:220px;
@@ -182,7 +187,7 @@ body {
 }
 .gift-box:hover{ transform: scale(1.04); }
 
-/* base & lid: positioned inside gift-box using absolute centering */
+/* base & lid */
 .gift-box-base{
   position:absolute;
   left:50%;
@@ -253,19 +258,44 @@ body {
 
 /* Start button */
 .start-selection-btn{
-  margin-top:6px;
+  margin-top:12px;
   background:var(--accent-green);
   color:#fff;
   border:0;
-  padding:10px 18px;
-  border-radius:10px;
+  padding:10px 20px;
+  border-radius:8px;
   font-weight:600;
   cursor:pointer;
   transition: transform .12s ease, box-shadow .12s ease;
 }
-.start-selection-btn:hover{ transform: translateY(-3px); box-shadow: 0 10px 30px rgba(16,185,129,0.16); }
+.start-selection-btn:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16,185,129,0.16); }
 
-/* shake animation (applied to .gift-box via .shake class) */
+/* Winner reveal */
+.winner-reveal{
+  margin-top:14px;
+  text-align:center;
+}
+.winner-name{
+  font-size:20px;
+  font-weight:700;
+  color:#1f2937;
+  margin-bottom:10px;
+}
+.pay-now-btn{
+  background:var(--accent-green);
+  color:#fff;
+  padding:10px 22px;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition: background .2s ease;
+}
+.pay-now-btn:hover{
+  background:#059669;
+}
+
+/* shake animation */
 .shake{
   animation: shake-rotate 0.55s ease-in-out 0s 3;
 }

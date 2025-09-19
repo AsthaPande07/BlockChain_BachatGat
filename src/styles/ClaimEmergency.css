@@ -637,3 +637,43 @@ select.form-control {
 .icon-file::before { content: '📄'; }
 .icon-shield::before { content: '🛡'; }
 .icon-upload::before { content: '📤'; }
+
+/* Bottom Buttons */
+.bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-outline {
+  border: 2px solid #dcdcdc;
+  background: white;
+  color: #374151;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-green {
+  background: #10b981;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: #f9f9f9;
+}
+
+.btn-green:hover {
+  background: #059669;
+}
+

@@ -8,46 +8,10 @@
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   color: #374151;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
+  background: #f3f4f6;
 }
 
-.warning-banner {
-  background: #fef3c7;
-  border-bottom: 1px solid #f59e0b;
-  padding: 12px 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: #92400e;
-}
 
-.warning-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.warning-icon {
-  color: #d97706;
-  font-size: 16px;
-}
-
-.learn-more {
-  color: #d97706;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.close-warning {
-  background: none;
-  border: none;
-  color: #92400e;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 4px;
-}
 
 .header {
   display: flex;
@@ -302,6 +266,8 @@
   background: linear-gradient(90deg, #1f2937 0%, #374151 100%);
   border-radius: 4px;
   transition: width 1s ease-in-out;
+  animation: loadProgress 2s ease-in-out;
+  animation: loadProgress 2s ease-in-out;
 }
 
 .progress-details {
@@ -517,11 +483,6 @@
     padding: 1rem;
   }
 
-  .warning-banner {
-    padding: 8px 1rem;
-    font-size: 12px;
-  }
-
   .page-title {
     font-size: 24px;
   }
@@ -535,8 +496,4 @@
   to {
     width: 75%;
   }
-}
-
-.progress-fill {
-  animation: loadProgress 2s ease-in-out;
 }

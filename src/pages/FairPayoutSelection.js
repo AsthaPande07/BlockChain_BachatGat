@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti";
 import "../styles/FairPayoutSelection.css";
 
 function FairPayoutSelection() {
   const navigate = useNavigate();
+  const [showWinner, setShowWinner] = useState(false);
 
   // Timer logic
   useEffect(() => {
@@ -28,33 +30,19 @@ function FairPayoutSelection() {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle selection (navigate after animation)
+  // Start selection -> show winner
   const startSelection = () => {
-    const giftBox = document.querySelector(".gift-box");
-    if (giftBox) {
-      giftBox.classList.add("shake");
-      setTimeout(() => {
-        navigate("/payout-confirmation");
-      }, 2000);
-    }
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+    setShowWinner(true);
   };
 
   return (
     <div>
-      {/* Header */}
-      <div className="header">
-        <div className="nav-dots">
-          <button className="nav-arrow">‹</button>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot active"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <button className="nav-arrow">›</button>
-        </div>
-        <div className="app-title">Blockchain Micro-Insurance App</div>
-        <button className="share-btn">Share</button>
-      </div>
+      
 
       {/* Container */}
       <div className="container">
@@ -99,26 +87,37 @@ function FairPayoutSelection() {
 
         {/* Main Content */}
         <div className="main-content">
-          {/* Selection Gift Box */}
+          {/* Selection Gift Box / Winner */}
           <div className="selection-section">
             <h3 className="section-title">
               <div className="section-icon">🎁</div>
               Selection Gift Box
             </h3>
 
-            <div className="gift-box-container">
-              <div className="gift-box" onClick={startSelection}>
-                <div className="gift-box-base"></div>
-                <div className="gift-box-lid"></div>
-                <div className="gift-ribbon-h"></div>
-                <div className="gift-ribbon-v"></div>
-                <div className="gift-bow"></div>
+            {!showWinner ? (
+              <div className="gift-box-container">
+                <div className="gift-box" onClick={startSelection}>
+                  <div className="gift-box-base"></div>
+                  <div className="gift-box-lid"></div>
+                  <div className="gift-ribbon-h"></div>
+                  <div className="gift-ribbon-v"></div>
+                  <div className="gift-bow"></div>
+                </div>
+                <button className="start-selection-btn" onClick={startSelection}>
+                  Start Selection
+                </button>
               </div>
-            </div>
-
-            <button className="start-selection-btn" onClick={startSelection}>
-              Start Selection
-            </button>
+            ) : (
+              <div className="winner-section">
+                <h2 className="winner-name">🎉 Raj Patel 🎉</h2>
+                <button
+                  className="pay-now-btn"
+                  onClick={() => navigate("/confirmation")}
+                >
+                  Pay Now
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Participants */}
