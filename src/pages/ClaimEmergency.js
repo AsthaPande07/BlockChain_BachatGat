@@ -252,6 +252,29 @@ const ClaimEmergency = () => {
                 ></textarea>
               </div>
 
+             <div className="form-group">
+  <label htmlFor="document">Upload Supporting Document</label>
+  <div className="file-upload">
+    <input
+      type="file"
+      id="document"
+      accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+      onChange={handleFileChange}
+      style={{ display: "none" }} // completely hide input
+    />
+    <div
+      className="file-upload-btn"
+      onClick={() => document.getElementById("document").click()} // trigger input click
+    >
+      <span>{fileName}</span>
+    </div>
+  </div>
+  <div className="upload-hint">
+    Upload proof of emergency (medical bills, official documents, etc.)
+  </div>
+</div>
+
+
               <div className="form-group">
                 <label htmlFor="document">Upload Supporting Document</label>
                 <div className="file-upload">
@@ -270,6 +293,7 @@ const ClaimEmergency = () => {
                   etc.)
                 </div>
               </div>
+
 
               <div className="modal-actions">
                 <button
