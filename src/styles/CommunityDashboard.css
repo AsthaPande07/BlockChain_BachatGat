@@ -8,8 +8,9 @@
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   color: #374151;
-  background: #f3f4f6
+  background: #f3f4f6;
 }
+
 
 
 .header {
@@ -265,6 +266,7 @@
   background: linear-gradient(90deg, #1f2937 0%, #374151 100%);
   border-radius: 4px;
   transition: width 1s ease-in-out;
+  animation: loadProgress 2s ease-in-out;
   animation: loadProgress 2s ease-in-out;
 }
 
