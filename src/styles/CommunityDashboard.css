@@ -23,6 +23,23 @@
   color: #92400e;
 }
 
+
+.arrow-btn {
+  position: absolute;
+  top: 20px; /* adjust to match your header padding */
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.2);
+}
+
+
 .warning-content {
   display: flex;
   align-items: center;

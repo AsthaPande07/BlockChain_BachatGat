@@ -1,16 +1,32 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigation hook
+import { useNavigate } from "react-router-dom";
 import "../styles/FrontPage.css";
 
-const FrontPage = () => {
-  const navigate = useNavigate(); // ✅ Initialize navigation
+// ✅ import smart contract helpers
+import { registerMember, signCommitment } from "../blochain_frontend/contractServices";
 
-  // Navigate to CommunityDashboard page
-  const joinCommunity = () => {
-    navigate("/dashboard"); // 👈 change the path to your route
+const FrontPage = () => {
+  const navigate = useNavigate();
+
+  const joinCommunity = async () => {
+    try {
+      // 1️⃣ Register the user
+      const tx1 = await registerMember();
+      console.log("✅ Registered:", tx1?.hash);
+
+      // 2️⃣ Sign commitment (500 mock tokens for example)
+      const amount = 500; // you can set dynamically
+      const tx2 = await signCommitment(amount);
+      console.log("✅ Commitment signed:", tx2?.hash);
+
+      alert("🎉 You successfully joined the community!");
+      navigate("/dashboard");
+    } catch (err) {
+      console.error("❌ Failed to join:", err);
+      alert("❌ Failed to join. Please approve in MetaMask.");
+    }
   };
 
-  // Animate feature cards on load
   useEffect(() => {
     const cards = document.querySelectorAll(".feature-card");
     cards.forEach((card, index) => {
@@ -71,7 +87,9 @@ const FrontPage = () => {
 
       {/* CTA */}
       <div className="cta-section">
-        <button className="join-btn" onClick={joinCommunity}>Join Community</button>
+        <button className="join-btn" onClick={joinCommunity}>
+          Join Community
+        </button>
         <div className="pricing-info">
           Start with just ₹500/month • No hidden fees • Cancel anytime
         </div>
