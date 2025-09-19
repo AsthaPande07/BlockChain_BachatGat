@@ -586,3 +586,26 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* Emergency Loan Hover Effect */
+.loan-card {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.loan-card .hover-text {
+  display: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1565c0;
+  margin-top: 10px;
+}
+
+.loan-card:hover .benefit-title,
+.loan-card:hover .benefit-desc {
+  display: none;
+}
+
+.loan-card:hover .hover-text {
+  display: block;
+  color: #0d47a1;
+}

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import demoData from "../demo_data.json"; // ✅ import demo data
 
 function CommunityDashboard() {
-  const [showWarning, setShowWarning] = useState(true);
   const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
 
@@ -24,24 +23,7 @@ function CommunityDashboard() {
 
   return (
     <div className="dashboard-body">
-      {/* Warning Banner */}
-      {showWarning && (
-        <div className="warning-banner">
-          <div className="warning-content">
-            <span className="warning-icon">⚠</span>
-            <span>
-              You're viewing a prototype with demo data. Do not enter personal info.
-            </span>
-            <span className="learn-more">Learn more</span>
-          </div>
-          <button
-            className="close-warning"
-            onClick={() => setShowWarning(false)}
-          >
-            ×
-          </button>
-        </div>
-      )}
+      {/* 🚫 Warning banner removed */}
 
       {/* Main Container */}
       <div className="container">
@@ -100,7 +82,8 @@ function CommunityDashboard() {
             <div className="progress-percentage">{progress}% Complete</div>
           </div>
           <div className="progress-subtitle">
-            {community.membersPaid} of {community.totalMembers} members have contributed
+            {community.membersPaid} of {community.totalMembers} members have
+            contributed
           </div>
 
           <div className="progress-bar">
@@ -127,12 +110,18 @@ function CommunityDashboard() {
             {members.map((member) => (
               <div className="member-item" key={member.id}>
                 <div className="member-info">
-                  <div className={`member-avatar ${member.eligibilityStatus ? "green" : "red"}`}>
+                  <div
+                    className={`member-avatar ${
+                      member.eligibilityStatus ? "green" : "red"
+                    }`}
+                  >
                     {member.name.charAt(0)}
                   </div>
                   <div className="member-details">
                     <div className="member-name">{member.name}</div>
-                    <div className="member-amount">₹{member.contribution}</div>
+                    <div className="member-amount">
+                      ₹{member.contribution}
+                    </div>
                   </div>
                 </div>
                 <div className="member-status">
@@ -142,7 +131,9 @@ function CommunityDashboard() {
                     }`}
                   >
                     <span>{member.contribution > 0 ? "✓" : "🕒"}</span>
-                    <span>{member.contribution > 0 ? "Paid" : "Pending"}</span>
+                    <span>
+                      {member.contribution > 0 ? "Paid" : "Pending"}
+                    </span>
                   </div>
                 </div>
               </div>

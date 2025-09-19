@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";   // ✅ Import useNavigate
 import "../styles/ContributionReputation.css";
 
 const ContributionReputation = () => {
   const [autoDebitActive, setAutoDebitActive] = useState(true);
   const [countdown, setCountdown] = useState({ days: 2, hours: 14, minutes: 32 });
+  const navigate = useNavigate();  // ✅ Initialize navigate
 
   // Toggle Auto Debit
   const toggleAutoDebit = () => {
@@ -32,8 +34,10 @@ const ContributionReputation = () => {
 
   const payNow = () => alert("Redirecting to payment gateway...");
   const setReminder = () => alert("Reminder set! You will be notified before grace period ends.");
-  const backToDashboard = () => alert("Navigating back to dashboard...");
-  const viewSelectionProcess = () => alert("Viewing selection process details...");
+
+  // ✅ Replace alerts with navigation
+  const backToDashboard = () => navigate("/dashboard");
+  const viewSelectionProcess = () => navigate("/selection");
 
   return (
     <div className="container">
@@ -173,7 +177,7 @@ const ContributionReputation = () => {
         ))}
       </div>
 
-      {/* Reputation Benefits */}
+         {/* Reputation Benefits */}
       <div className="card benefits-card">
         <div className="benefits-header">
           <span className="card-icon">🎁</span> Reputation Benefits
@@ -185,11 +189,21 @@ const ContributionReputation = () => {
             <div className="benefit-title green">Higher Selection Chance</div>
             <div className="benefit-desc green">Better reputation = better odds</div>
           </div>
-          <div className="benefit-item blue">
-            <div className="benefit-icon blue">💳</div>
-            <div className="benefit-title blue">Emergency Loans</div>
-            <div className="benefit-desc blue">Access to quick funding</div>
-          </div>
+
+          {/* ✅ Emergency Loans card navigates to /emergency-loans */}
+          {/* ✅ Emergency Loans card navigates to /emergency-loans */}
+<div
+  className="benefit-item blue loan-card"
+  onClick={() => navigate("/claim")}
+  style={{ cursor: "pointer" }}
+>
+  <div className="benefit-icon blue">💳</div>
+  <div className="benefit-title blue">Emergency Loans</div>
+  <div className="benefit-desc blue">Access to quick funding</div>
+  <div className="hover-text">Claim Now</div> {/* hidden by default, shows on hover */}
+</div>
+
+
           <div className="benefit-item purple">
             <div className="benefit-icon purple">⭐</div>
             <div className="benefit-title purple">Community Trust</div>
@@ -198,10 +212,15 @@ const ContributionReputation = () => {
         </div>
       </div>
 
+
       {/* Bottom Buttons */}
       <div className="bottom-buttons">
-        <button className="btn-outline" onClick={backToDashboard}>Back to Dashboard</button>
-        <button className="btn-solid" onClick={viewSelectionProcess}>View Selection Process</button>
+        <button className="btn-outline" onClick={backToDashboard}>
+          Back to Dashboard
+        </button>
+        <button className="btn-solid" onClick={viewSelectionProcess}>
+          View Selection Process
+        </button>
       </div>
     </div>
   );
